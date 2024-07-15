@@ -1,0 +1,64 @@
+                      CONVENCION METODOS CONTROLADORES
+
+   VERBO HHTP          URl                    ACCION          RUTA
+
+    GET             /Clientes                index       clientes.index
+    POST            /Clientes                store       clientes.store
+    DELETE          /clientes/{cliente}      destroy     clientes.destroy
+
+
+
+
+
+
+    ver en www.laravel/com/docs/9.x/controllers
+
+========================================================================================================================================================
+
+                               dd('xx....')
+
+   dd('') envia por parntalla pero detiene el programa, es muy util para debugear
+
+
+========================================================================================================================================================
+
+                                    MIGRACIONES
+
+En las migracines en la function up ponenmos los cambios y en la down los revertivos cuando hacemo el roollback
+
+eturn new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('userName');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('userName');
+        });
+    }
+};
+
+***CUANDO SE CREA UN CAMPO NUEVO EN UNA TABLE HAY QUE PONERLO EN EL MODELO DE LA MISMA
+
+========================================================================================================================================================  
+ 
+                                         Eloquent ORM
+
+Eloquent es el ORM de laravel.
+
+Tiene que haber un modelo para cada tabla de la bd.
+Los nombres deben ser en singular y la tabla se crea en plurar, esto puede se run problema en español pero se pueden renombrar las tablas
+Para usar en modelo hay que importarlo
+
+      User::create   => Esto equivale a INSERT TO usuarios
